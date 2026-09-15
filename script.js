@@ -12,7 +12,7 @@
         if ("scrollRestoration" in history) history.scrollRestoration = "manual";
         window.scrollTo(0, 0);
 
-        const WHATSAPP_NUMBER = "50689413632";
+        const WHATSAPP_NUMBER = "50685874276";
         const MENSAJE_FLOTANTE = "Hola, vi su página del Apartahotel Playa Luna y quisiera más información.";
         const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
