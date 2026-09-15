@@ -182,49 +182,13 @@ button { font-family: inherit; }
     transform: translateY(-2px); border-color: var(--arena);
 }
 
-/* —— Acciones Hero (Botón Reserva + Redes Sociales) —— */
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center; /* Centrado */
+    justify-content: center;
     gap: 24px;
     margin-top: 10px;
-}
-
-.hero-socials {
-    display: flex;
-    gap: 14px;
-}
-
-.social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0; /* Previene bugs en móviles */
-    border-radius: 50%;
-    background: rgba(245, 238, 224, 0.08);
-    color: var(--arena);
-    border: 1px solid rgba(245, 238, 224, 0.35);
-    transition: all var(--transicion);
-    backdrop-filter: blur(4px);
-}
-
-.social-btn:hover {
-    background: var(--arena);
-    color: var(--selva-osc);
-    transform: translateY(-4px);
-    border-color: var(--arena);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.social-btn svg {
-    width: 22px !important; /* Fuerza tamaño para evitar íconos gigantes en iOS/Android */
-    height: 22px !important;
-    flex-shrink: 0;
-    display: block;
 }
 
 /* —— Hero —— */
@@ -249,7 +213,6 @@ button { font-family: inherit; }
     50% { transform: translate(-18px, 12px) rotate(6deg); }
 }
 
-/* MODIFICACIÓN: Contenido del Hero Centrado y más grande */
 .hero-content {
     padding-bottom: 110px;
     padding-top: 160px;
@@ -269,7 +232,7 @@ button { font-family: inherit; }
     margin-bottom: 14px;
 }
 .hero-title {
-    font-size: clamp(3.2rem, 9vw, 5.8rem); /* Texto mucho más imponente */
+    font-size: clamp(3.2rem, 9vw, 5.8rem);
     font-weight: 400;
     margin-bottom: 18px;
     color: var(--arena);
@@ -277,7 +240,7 @@ button { font-family: inherit; }
 }
 .hero-sub {
     color: rgba(245, 238, 224, 0.85);
-    font-size: 1.15rem; /* Más grande */
+    font-size: 1.15rem;
     margin-bottom: 35px;
     max-width: 40ch;
 }
@@ -469,6 +432,43 @@ select {
 .site-footer { background-color: var(--selva-osc); color: rgba(245, 238, 224, 0.75); padding: 50px 0; }
 .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
 .brand--footer .brand-name { color: var(--arena); }
+
+/* —— Íconos Sociales en el Pie de Página —— */
+.footer-socials {
+    display: flex;
+    gap: 16px;
+    margin: 18px 0;
+    justify-content: center;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(245, 238, 224, 0.06);
+    color: rgba(245, 238, 224, 0.85);
+    border: 1px solid rgba(245, 238, 224, 0.15);
+    transition: all var(--transicion);
+}
+
+.social-btn:hover {
+    background: var(--oro);
+    color: var(--selva-osc);
+    border-color: var(--oro);
+    transform: translateY(-4px);
+}
+
+.social-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0;
+    display: block;
+}
+
 .footer-copy { font-size: 0.8rem; color: rgba(245, 238, 224, 0.5); }
 
 .whatsapp-float {
