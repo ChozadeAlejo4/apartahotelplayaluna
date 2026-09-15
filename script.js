@@ -13,7 +13,7 @@
         window.scrollTo(0, 0);
 
         const WHATSAPP_NUMBER = "50685874276";
-        const MENSAJE_FLOTANTE = "Hola, vi su página del Apartahotel Playa Luna y quisiera más información.";
+        const MENSAJE_FLOTANTE = "Estimado equipo de Apartahotel Playa Luna, un cordial saludo. Me gustaría recibir más información sobre sus alojamientos.";
         const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         const header = document.getElementById("siteHeader");
@@ -61,9 +61,7 @@
         }, { rootMargin: "-45% 0px -45% 0px" });
         secciones.forEach((seccion) => observadorSecciones.observe(seccion));
 
-        /* —— Palabras que caen desde sitios distintos, sin superponerse ——
-           Cada palabra es inline-block en el flujo, así al aterrizar ocupan
-           su lugar natural. Solo se disparan scrolleando HACIA ABAJO. */
+        /* —— Palabras que caen desde sitios distintos, sin superponerse —— */
         const DIR = [
             { x: -18, y: -72, r: -6 },
             { x: 22, y: -88, r: 5 },
@@ -97,7 +95,6 @@
                     const span = document.createElement("span");
                     span.className = "fall-word";
                     const d = DIR[i % DIR.length];
-                    /* desfase extra por índice para que no salgan del mismo punto */
                     const jitter = ((i * 17) % 16) - 8;
                     span.style.setProperty("--fx", d.x + jitter + "px");
                     span.style.setProperty("--fy", d.y + ((i * 13) % 30) + "px");
@@ -143,7 +140,6 @@
             }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
             elementosReveal.forEach((el) => observadorReveal.observe(el));
 
-            /* Hero: sí anima al cargar (está al inicio) */
             const hero = document.querySelector(".hero-content");
             if (hero) {
                 requestAnimationFrame(() => {
@@ -248,6 +244,7 @@
             const [anio, mes, dia] = fechaISO.split("-");
             return dia + "/" + mes + "/" + anio;
         }
+        
         if (formularioReserva) {
             formularioReserva.addEventListener("submit", (evento) => {
                 evento.preventDefault();
@@ -263,14 +260,16 @@
                     salida: inputSalida.value,
                     comentarios: document.getElementById("comentarios").value.trim(),
                 };
-                let mensaje = "¡Hola Armando! Vi la página del Apartahotel Playa Luna y quiero consultar disponibilidad.\n\n";
-                mensaje += "Nombre: " + datos.nombre + "\n";
-                mensaje += "Personas: " + datos.personas + "\n";
-                mensaje += "Apartamento de interés: " + datos.apartamento + "\n";
-                mensaje += "Llegada: " + formatearFecha(datos.llegada) + "\n";
-                mensaje += "Salida: " + formatearFecha(datos.salida) + "\n";
-                if (datos.comentarios) mensaje += "Comentarios: " + datos.comentarios + "\n";
-                mensaje += "\n¡Quedo atento a la disponibilidad, gracias!";
+                
+                let mensaje = `Estimado Armando, un cordial saludo.\n\nLe escribo desde el sitio web de Apartahotel Playa Luna para solicitar información sobre disponibilidad. A continuación, detallo los datos de mi consulta:\n\n`;
+                mensaje += `👤 *Nombre completo:* ${datos.nombre}\n`;
+                mensaje += `👥 *Cantidad de personas:* ${datos.personas}\n`;
+                mensaje += `🏨 *Apartamento de interés:* ${datos.apartamento}\n`;
+                mensaje += `📅 *Fecha de llegada:* ${formatearFecha(datos.llegada)}\n`;
+                mensaje += `🛫 *Fecha de salida:* ${formatearFecha(datos.salida)}\n`;
+                mensaje += `💬 *Comentarios/Solicitudes:* ${datos.comentarios}\n\n`;
+                mensaje += `Agradezco de antemano su atención y quedo a la espera de su respuesta para confirmar los detalles.\n\nAtentamente,\n${datos.nombre}`;
+                
                 window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje), "_blank");
                 formularioReserva.reset();
             });

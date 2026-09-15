@@ -187,6 +187,7 @@ button { font-family: inherit; }
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center; /* Centrado */
     gap: 24px;
     margin-top: 10px;
 }
@@ -202,6 +203,7 @@ button { font-family: inherit; }
     justify-content: center;
     width: 48px;
     height: 48px;
+    flex-shrink: 0; /* Previene bugs en móviles */
     border-radius: 50%;
     background: rgba(245, 238, 224, 0.08);
     color: var(--arena);
@@ -219,8 +221,10 @@ button { font-family: inherit; }
 }
 
 .social-btn svg {
-    width: 22px;
-    height: 22px;
+    width: 22px !important; /* Fuerza tamaño para evitar íconos gigantes en iOS/Android */
+    height: 22px !important;
+    flex-shrink: 0;
+    display: block;
 }
 
 /* —— Hero —— */
@@ -244,7 +248,18 @@ button { font-family: inherit; }
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(-18px, 12px) rotate(6deg); }
 }
-.hero-content { padding-bottom: 110px; padding-top: 160px; max-width: 720px; }
+
+/* MODIFICACIÓN: Contenido del Hero Centrado y más grande */
+.hero-content {
+    padding-bottom: 110px;
+    padding-top: 160px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .hero-kicker {
     display: inline-block;
     letter-spacing: 0.28em;
@@ -254,14 +269,17 @@ button { font-family: inherit; }
     margin-bottom: 14px;
 }
 .hero-title {
-    font-size: clamp(2.8rem, 8vw, 5.2rem); font-weight: 400; margin-bottom: 18px;
-    color: var(--arena); text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    font-size: clamp(3.2rem, 9vw, 5.8rem); /* Texto mucho más imponente */
+    font-weight: 400;
+    margin-bottom: 18px;
+    color: var(--arena);
+    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 .hero-sub {
     color: rgba(245, 238, 224, 0.85);
-    font-size: 1.05rem;
-    margin-bottom: 32px;
-    max-width: 34ch;
+    font-size: 1.15rem; /* Más grande */
+    margin-bottom: 35px;
+    max-width: 40ch;
 }
 .scroll-cue {
     position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
